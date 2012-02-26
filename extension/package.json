@@ -1,9 +1,9 @@
 {
-  "name": "github-travis",
-  "license": "Apache",
-  "author": "David Burns <david.burns@theautomatedtester.co.uk>",
-  "version": "0.1",
-  "fullName": "Github+Travis",
-  "id": "memchaser@quality.mozilla.org",
-  "description": "Adds the ability to see Travis CI details next to the name of the project when on Github",
+    "description": "Adds the ability to see Travis CI details next to the name of the project when on Github", 
+    "license": "Apache", 
+    "author": "David Burns <david.burns@theautomatedtester.co.uk>", 
+    "version": "0.1", 
+    "fullName": "Github+Travis", 
+    "id": "github+travis@theautomatedtester.co.uk"
+    "name": "github-travis"
 }
