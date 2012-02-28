@@ -1,4 +1,6 @@
-var pageMod = require("page-mod");
+var pageMod = require("page-mod")
+  , widgets = require("widget")
+  , data = require("self").data;
 
 exports.main = function(options, callbacks){
 var update = "var style = window.document.createElement('style');" +
@@ -30,5 +32,11 @@ update += "link.appendChild(img);" +
     include: "https://github.com/*",
     constentScriptWhen: 'end',
     contentScript: update, 
+  });
+
+  widgets.Widget({
+    id: "travis",
+    label: "travis",
+    contentURL: data.url("travis.png"),
   });
 };
