@@ -30,7 +30,7 @@ update += "link.appendChild(img);" +
 
   pageMod.PageMod({
     include: "https://github.com/*",
-    constentScriptWhen: 'end',
+    constentScriptWhen: 'ready',
     contentScript: update, 
   });
 
