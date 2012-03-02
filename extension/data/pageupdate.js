@@ -15,7 +15,7 @@ img.setAttribute('alt', 'build status');
               
               /* Create the link element. */
 var link = window.document.createElement('a');
-link.href = 'http://travis-ci.org/#!/' + project;
+link.href = 'http://travis-ci.org/#!' + project;
 link.id = 'travis-ci';
                   
                   /* Insert the elements into the DOM. */
