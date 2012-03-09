@@ -22,6 +22,7 @@ var addNewProject = function(){
   tr.appendChild(td2);
 
   table.appendChild(tr);
+  projectUrl.value = '';
 }
 var button = window.document.getElementById('add');
 button.addEventListener('click', addNewProject, false);
