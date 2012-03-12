@@ -1,25 +1,41 @@
 var pageMod = require("page-mod")
   , widgets = require("widget")
   , panel = require("panel")
-  , data = require("self").data;
+  , self = require("self")
+  , prefs = require("api-utils/preferences-service");
+
+const MODIFIED_PREFS_PREF = "extensions." + self.id + ".modifiedPrefs";
+const TRAVIS_CI_PREF = "travis_ci.projects";
+
 
 exports.main = function(options, callbacks){
   pageMod.PageMod({
     include: "https://github.com/*",
     constentScriptWhen: 'ready',
-    contentScriptFile: data.url("pageupdate.js"), 
+    contentScriptFile: self.data.url("pageupdate.js"), 
   });
 
   var prefPanel = panel.Panel({
     height: 200,
     width: 350,
-    contentURL: data.url("projects.html"),
+    contentURL: self.data.url("projects.html"),
   });
 
   widgets.Widget({
     id: "travis",
     label: "travis",
-    contentURL: data.url("travis.png"),
+    contentURL: self.data.url("travis.png"),
     panel: prefPanel,
   });
+};
+
+exports.onUnload = function(reason) {
+  // Reset anything I touch!
+  if (reason === 'disable' || reason === 'uninstall'){
+    var modifiedPrefs = JSON.parse(prefs.get(MODIFIED_PREFS_PREF, "{}"));
+    for (var pref in modifiedPrefs){
+      prefs.set(pref, modifiedPrefs[pref]);
+    }
+    prefs.reset(MODIFIED_PREFS_PREF);
+  }
 };
