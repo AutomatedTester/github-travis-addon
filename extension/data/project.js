@@ -1,6 +1,3 @@
-//var prefs = require("api-utils/preferences-service");
-
-
 var addNewProject = function(){
   var projectUrl = document.getElementById('projectUrl');
   var table = document.getElementById("currentProjects");
