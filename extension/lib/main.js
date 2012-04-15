@@ -1,3 +1,5 @@
+"use strict";
+
 var pageMod = require("page-mod")
   , widgets = require("widget")
   , panel = require("panel")
@@ -21,11 +23,15 @@ exports.main = function(options, callbacks){
     contentURL: self.data.url("projects.html"),
   });
 
-  widgets.Widget({
+  var widget = widgets.Widget({
     id: "travis",
     label: "travis",
     contentURL: self.data.url("travis.png"),
     panel: prefPanel,
+  });
+
+  prefPanel.port.on("addProject", function (url) {
+    console.log(url);
   });
 };
 

@@ -32,6 +32,8 @@ var addNewProject = function(){
   /* Insert table row onto the page and cleanup */
   table.appendChild(tr);
   projectUrl.value = '';
+
+  self.port.emit('addProject', link.href);
 }
 
 var button = window.document.getElementById('add');
