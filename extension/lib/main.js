@@ -31,7 +31,12 @@ exports.main = function(options, callbacks){
   });
 
   prefPanel.port.on("addProject", function (url) {
-    console.log(url);
+    var travisPref = JSON.parse(prefs.get(TRAVIS_CI_PREF, "{}"));
+    if (travisPref.sites === undefined){
+      travisPref.sites = [];
+    }
+    travisPref.sites.push(url);
+    prefs.set(TRAVIS_CI_PREF, JSON.stringify(travisPref));
   });
 };
 
@@ -43,5 +48,6 @@ exports.onUnload = function(reason) {
       prefs.set(pref, modifiedPrefs[pref]);
     }
     prefs.reset(MODIFIED_PREFS_PREF);
+    prefs.reset(TRAVIS_CI_PREF);
   }
 };
