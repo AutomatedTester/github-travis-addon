@@ -30,7 +30,7 @@ var addNewProject = function(){
   table.appendChild(tr);
   projectUrl.value = '';
 
-  self.port.emit('addProject', link.href);
+  addon.port.emit('addProject', link.href);
 }
 
 var button = window.document.getElementById('add');
