@@ -1,7 +1,11 @@
-var addNewProject = function(){
-  var projectUrl = document.getElementById('projectUrl');
+var buildUI = function (prefs) {
+  if (prefs == null){
+    prefs  = document.getElementById('projectUrl').value;
+    document.getElementById('projectUrl').value = '';
+  }
+
   var table = document.getElementById("currentProjects");
-  var project = projectUrl.value.split('/').splice(3,4).join('/');
+  var project = prefs.split('/').splice(3,4).join('/');
 
   /* Create table row and cells */
   var tr = document.createElement('tr');
@@ -15,7 +19,7 @@ var addNewProject = function(){
                              
   /* Create the link element and populate */
   var link = window.document.createElement('a');
-  link.href = projectUrl.value;
+  link.href = prefs;
   var text = document.createTextNode(project);
   link.appendChild(text); 
 
@@ -28,10 +32,23 @@ var addNewProject = function(){
 
   /* Insert table row onto the page and cleanup */
   table.appendChild(tr);
-  projectUrl.value = '';
-
-  addon.port.emit('addProject', link.href);
+  
+  return link.href;
 }
+
+var addNewProject = function () {
+  var link = buildUI();
+  self.port.emit('addProject', link);
+};
+
+self.port.on("show", function (data) {
+  if (!data.hasOwnProperty("sites")){
+    return;
+  }
+  data.sites.forEach(function (site){
+    buildUI(site);
+  });
+});
 
 var button = window.document.getElementById('add');
 button.addEventListener('click', addNewProject, false);

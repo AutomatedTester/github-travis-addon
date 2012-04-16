@@ -11,6 +11,8 @@ const TRAVIS_CI_PREF = "travis_ci.projects";
 
 
 exports.main = function(options, callbacks){
+  var loaded = false;
+
   pageMod.PageMod({
     include: "https://github.com/*",
     constentScriptWhen: 'ready',
@@ -21,6 +23,13 @@ exports.main = function(options, callbacks){
     height: 200,
     width: 350,
     contentURL: self.data.url("projects.html"),
+    contentScriptFile: self.data.url("project.js"),
+    onShow: function(){
+      if (!loaded){
+        this.port.emit("show", JSON.parse(prefs.get(TRAVIS_CI_PREF, "{}")));
+        loaded = true;
+      }
+    },
   });
 
   var widget = widgets.Widget({
