@@ -509,3 +509,8 @@ div#navigation ul li.lang {
   padding: 1;
   margin: 1.5em;
 }
+
+#projectUrl {
+  width: 210px;
+  color: grey;
+}

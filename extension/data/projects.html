@@ -5,12 +5,13 @@
   <body>
       <h3> Travis </h3>
       <h5>Projects:</h5>
-      <!--//TODO(David) Pull data from a pref and then render images -->
       <table id='currentProjects'>
 
       </table>
-      <div id='insertProjects'>
-        <input type=text id='projectUrl'><button id='add'>Add Project</button>        
+      <button id='add'>Add</button>
+      <div id='insertProjects' style='display:none;'>
+        <input type=text id='projectUrl' value='https://github.com/travis-ci/travis-ci'>
+        <button id='addProject'>Add Project</button>        
       </div>
       <script src='project.js'>
       </script>

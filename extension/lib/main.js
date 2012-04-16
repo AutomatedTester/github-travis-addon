@@ -30,6 +30,9 @@ exports.main = function(options, callbacks){
         loaded = true;
       }
     },
+    onHide: function(){
+      this.port.emit("hide");
+    },
   });
 
   var widget = widgets.Widget({

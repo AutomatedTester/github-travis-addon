@@ -32,6 +32,9 @@ var buildUI = function (prefs) {
 
   /* Insert table row onto the page and cleanup */
   table.appendChild(tr);
+
+  var insertProjects = window.document.getElementById('insertProjects');
+  insertProjects.style.display = 'none';
   
   return link.href;
 }
@@ -50,5 +53,34 @@ self.port.on("show", function (data) {
   });
 });
 
-var button = window.document.getElementById('add');
+self.port.on("hide", function () {
+  var insertProjects = window.document.getElementById('insertProjects');
+  insertProjects.style.display = 'none';
+});
+
+var button = window.document.getElementById('addProject');
 button.addEventListener('click', addNewProject, false);
+
+var showAddProject = function () {
+  var insertProjects = window.document.getElementById('insertProjects');
+  insertProjects.style.display = 'block';
+}
+
+var add = window.document.getElementById('add');
+add.addEventListener('click', showAddProject, false);
+
+var clearInput = function(){
+  var input = window.document.getElementById("projectUrl");
+  input.value = '';
+}
+
+var populateInput = function(){
+  var input = window.document.getElementById("projectUrl");
+  if (input.value == ''){
+    input.value = 'https://github.com/travis-ci/travis-ci';
+  }
+}
+
+var input = window.document.getElementById("projectUrl");
+input.addEventListener('focus', clearInput, true);
+input.addEventListener('blur', populateInput, true);
