@@ -8,7 +8,7 @@ small, strike, strong, sub, sup, tt, var,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
-  margin: 0;
+  margin: 5;
   padding: 0;
   border: 0;
   outline: 0;
