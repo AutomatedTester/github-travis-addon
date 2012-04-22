@@ -1,4 +1,12 @@
 
+0.2.1 / 2012-04-22 
+==================
+
+  * Fixed styling of lines
+  * Fixed clicking of links to open a new tab
+  * Added build image to be linked to their project
+
+
 0.2.0 / 2012-04-16 
 ==================
 
