@@ -14,8 +14,14 @@ var buildUI = function (prefs) {
 
   /* Create image element and populate */
   var img = document.createElement('img');
-  img.setAttribute('src', 'https://secure.travis-ci.org/' + project + '.png');
+  var travisURL = 'https://secure.travis-ci.org/' + project 
+  img.setAttribute('src', travisURL + '.png');
   img.setAttribute('alt', 'build status');
+  
+  /* Create the link element and populate */
+  var travisLink = window.document.createElement('a');
+  travisLink.href = travisURL;
+  travisLink.appendChild(img); 
                              
   /* Create the link element and populate */
   var link = window.document.createElement('a');
@@ -25,7 +31,7 @@ var buildUI = function (prefs) {
 
   /* Insert items into cells and then into the row */
   td1.appendChild(link);
-  td2.appendChild(img);
+  td2.appendChild(travisLink);
 
   tr.appendChild(td1);
   tr.appendChild(td2);
@@ -84,3 +90,18 @@ var populateInput = function(){
 var input = window.document.getElementById("projectUrl");
 input.addEventListener('focus', clearInput, true);
 input.addEventListener('blur', populateInput, true);
+window.document.addEventListener('click', function(event) {
+  var t = event.target;
+  if (t.nodeName == 'A' || t.nodeName == 'IMG'){
+    event.preventDefault();
+    var url = '';
+    if (t.nodeName == 'A'){
+      url = t.toString();
+    } else {
+      url = t.src.toString().substring(0, t.src.toString().length - 4);
+    }
+    self.port.emit('clickLink', url);
+    return false;
+  }
+  return false;
+}, false);

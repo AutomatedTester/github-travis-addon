@@ -4,7 +4,8 @@ var pageMod = require("page-mod")
   , widgets = require("widget")
   , panel = require("panel")
   , self = require("self")
-  , prefs = require("api-utils/preferences-service");
+  , prefs = require("api-utils/preferences-service")
+  , tabs = require("tabs");
 
 const MODIFIED_PREFS_PREF = "extensions." + self.id + ".modifiedPrefs";
 const TRAVIS_CI_PREF = "travis_ci.projects";
@@ -21,7 +22,7 @@ exports.main = function(options, callbacks){
 
   var prefPanel = panel.Panel({
     height: 200,
-    width: 350,
+    width: 380,
     contentURL: self.data.url("projects.html"),
     contentScriptFile: self.data.url("project.js"),
     onShow: function(){
@@ -49,6 +50,10 @@ exports.main = function(options, callbacks){
     }
     travisPref.sites.push(url);
     prefs.set(TRAVIS_CI_PREF, JSON.stringify(travisPref));
+  });
+
+  prefPanel.port.on("clickLink", function (url) {
+    tabs.open(url);
   });
 };
 
