@@ -26,14 +26,28 @@ strong.appendChild(link);
 
 // Adding a build tab
 var buildTab = window.document.createElement('li');
-buildTab.class = 'tabnav-tab';
+buildTab.addEventListener('click', function(){
+  var container = window.document.getElementById("js-repo-pjax-container");
+  container.style.display = 'none';
+  var selectedTab = window.document.querySelectorAll('a.selected.tabnav-tab')[0];
+  selectedTab.classList.remove("selected");
+  
+  var buildLink = window.document.getElementById('travisBuildLink');
+  buildLink.classList.add("selected");
 
+  //TODO(David) Add code to pull build status from Travis API
+})
+
+// Adding the link
 var buildLink = window.document.createElement('a');
-buildLink.href = 'http://travis-ci.org/#!' + project;
+buildLink.id = 'travisBuildLink';
+buildLink.href = '#';
 buildLink.innerHTML = "Builds";
 buildLink.classList.add('tabnav-tab');
 buildTab.appendChild(buildLink);
 
+// Attaching to the DOM
 var tabs = window.document.getElementsByClassName('tabnav-tab');
 var parentEl = tabs[4].parentNode;
 parentEl.parentNode.insertBefore(buildTab, tabs[4].parentNode.nextSibling);
+
