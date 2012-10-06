@@ -1,28 +1,54 @@
 // Add the travis ci image to the project
 var style = window.document.createElement('style');
-style.innerHTML = '#travis-ci{border-radius:1px;display:inline-block;margin-left:8px;margin-bottom:-1px;opacity:0.9;-moz-transition: all .2s;}';
-style.innerHTML += '#travis-ci:hover{background:rgba(0,0,0,0.5);box-shadow: 0 0 3px rgba(0,0,0,1);opacity:1;cursor:pointer;}';
-style.innerHTML += '#travis-ci img{display:block;}';
+style.innerHTML = '.travis-ci{z-index:50;overflow:hidden;position:absolute;border-radius:1px;display:inline-block;margin-left:8px;margin-bottom:-1px;opacity:0.9;-moz-transition: all .2s;}';
+style.innerHTML += '.travis-ci:hover{background:rgba(0,0,0,0.5);box-shadow: 0 0 3px rgba(0,0,0,1);opacity:1;cursor:pointer;}';
+style.innerHTML += '.travis-ci img{display:block;padding:5px;}';
+style.innerHTML += 'ul.repositories a.travis-ci.user{position:relative;top:5px}'
+style.innerHTML += '.travis-ci.repo{margin:0 0 0 8px}';
+var body = window.document.getElementsByTagName('body')[0];
+body.appendChild(style);
       
-var tab = window.document.getElementsByClassName('title-actions-bar')[0];
-var h1 = tab.getElementsByTagName('h1')[0];
-var strong = h1.getElementsByTagName('strong')[0];
+/*
+  css.insertRule('.travis-ci:hover{opacity:1;cursor:pointer}', 1);
+  css.insertRule('.travis-ci img{position:relative;left:-53px;-o-transition:all .3s}', 1);
+  css.insertRule('.travis-ci:hover img{left:0}', 1);
+*/
+function isStatusUnknown(img){
+    // Cannot compare actual image data through canvas due to Same Origin Policy
+    return img.width == 95 && img.height == 13;
+  }
 
-var project = window.location.pathname.split('/').splice(0,3).join('/');
-var img = window.document.createElement('img');
-            
-img.setAttribute('src', 'https://secure.travis-ci.org' + project + '.png');
-img.setAttribute('alt', 'build status');
-              
-/* Create the link element. */
-var link = window.document.createElement('a');
-link.href = 'http://travis-ci.org/#!' + project;
-link.id = 'travis-ci';
-                  
-/* Insert the elements into the DOM. */
-link.appendChild(img);
-strong.appendChild(style);
-strong.appendChild(link);
+function insertBuildStatus(el, project, className){
+  var img = document.createElement('img');
+  img.src = 'https://secure.travis-ci.org' + project + '.png';
+  img.alt = 'build status';
+  img.onload = function(){
+    if(!isStatusUnknown(img)){
+      var link = document.createElement('a');
+      link.href = 'http://travis-ci.org' + project;
+      link.className = 'travis-ci ' + className;
+  
+      link.appendChild(img);
+      el.appendChild(link);
+    }
+  }
+}
+
+var el = document.querySelector('.title-actions-bar h1 strong');
+if(el){
+  insertBuildStatus(el, window.location.pathname.split('/').splice(0,3).join('/'), 'repo');
+}
+
+// Inject build status to user/organization page
+var links = document.querySelectorAll('.repolist li h3');
+if(links.length > 0){
+  for(i in links){
+    if(typeof links[i] == 'object'){
+      var project = '/' + links[i].querySelector('a').href.split('/').splice(3,3).join('/');
+      insertBuildStatus(links[i], project, 'user');
+    }
+  }
+}
 
 // Adding a build tab
 var buildTab = window.document.createElement('li');
@@ -65,14 +91,17 @@ buildTab.addEventListener('click', function(){
   travisContainer.appendChild(table);
   var containerParent = container.parentNode;
   containerParent.insertBefore(travisContainer, container);
+  
   createAddonStyles();
+
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       //TODO(David) Add in the building the rest of the table
+      alert(xhr.responseText)
     }
   }
-  xhr.open("GET", "http://travis-ci.org/" + project + "/builds.json", true);
+  xhr.open("GET", "https://api.travis-ci.org/builds/", true);
   xhr.send();
 })
 
@@ -86,8 +115,10 @@ buildTab.appendChild(buildLink);
 
 // Attaching to the DOM
 var tabs = window.document.getElementsByClassName('tabnav-tab');
-var parentEl = tabs[4].parentNode;
-parentEl.parentNode.insertBefore(buildTab, tabs[4].parentNode.nextSibling);
+if (tabs){
+  var parentEl = tabs[4].parentNode;
+  parentEl.parentNode.insertBefore(buildTab, tabs[4].parentNode.nextSibling);
+}
 
 var createAddonStyles = function() {
   var travisStyle = window.document.createElement('style');
