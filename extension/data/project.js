@@ -1,6 +1,11 @@
+var sites = [];
+
+
 var buildUI = function (prefs) {
+  console.log("buildUI called with prefs: " + prefs);
   if (prefs == null){
     prefs  = document.getElementById('projectUrl').value;
+    sites.push(prefs);
     document.getElementById('projectUrl').value = '';
   }
 
@@ -54,7 +59,10 @@ self.port.on("show", function (data) {
   if (!data.hasOwnProperty("sites")){
     return;
   }
-  data.sites.forEach(function (site){
+  
+  sites = data.sites;
+
+  sites.forEach(function (site){
     buildUI(site);
   });
 });
@@ -105,3 +113,21 @@ window.document.addEventListener('click', function(event) {
   }
   return false;
 }, false);
+
+var rebuildUI = function(sites){
+  var oldTable = document.getElementById("currentProjects");
+  var tableParent = oldTable.parentNode;
+
+  var table = document.createElement('table');
+  table.id = 'currentProjects';
+  
+  tableParent.removeChild(oldTable);
+  tableParent.appendChild(table);
+
+  sites.forEach(function (site){
+    buildUI(site);
+  });
+}
+
+
+var reloadInterval = window.setInterval(rebuildUI, 1000*60*5, sites);
