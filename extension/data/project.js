@@ -19,7 +19,7 @@ var buildUI = function (prefs) {
 
   /* Create image element and populate */
   var img = document.createElement('img');
-  var travisURL = 'https://secure.travis-ci.org/' + project 
+  var travisURL = 'https://travis-ci.org/' + project 
   img.setAttribute('src', travisURL + '.png');
   img.setAttribute('alt', 'build status');
   

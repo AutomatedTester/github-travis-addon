@@ -15,7 +15,7 @@ function isStatusUnknown(img){
 
 function insertBuildStatus(el, project, className){
   var img = document.createElement('img');
-  img.src = 'https://secure.travis-ci.org' + project + '.png';
+  img.src = 'https://travis-ci.org' + project + '.png';
   img.alt = 'build status';
   img.onload = function(){
     if(!isStatusUnknown(img)){
