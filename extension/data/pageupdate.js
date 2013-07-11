@@ -29,7 +29,7 @@ function insertBuildStatus(el, project, className){
   }
 }
 
-var el = document.querySelector('.title-actions-bar h1 strong');
+var el = document.querySelector('.entry-title strong');
 if(el){
   insertBuildStatus(el, window.location.pathname.split('/').splice(0,3).join('/'), 'repo');
 }
