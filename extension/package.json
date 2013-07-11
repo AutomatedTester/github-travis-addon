@@ -2,7 +2,7 @@
     "name": "github-travis", 
     "license": "Apache", 
     "author": "David Burns <david.burns@theautomatedtester.co.uk>", 
-    "version": "0.2.5", 
+    "version": "0.2.6", 
     "fullName": "Github+Travis", 
     "id": "githubtravis@theautomatedtester.co.uk", 
     "description": "Adds the ability to see Travis CI details next to the name of the project when on Github"
