@@ -45,3 +45,40 @@ if(links.length > 0){
   }
 }
 
+// Add Travis CI button to GitHub
+/*<li class="tooltipped leftwards" original-title="Code">
+
+    <a class="js-selected-navigation-item selected" data-selected-links="repo_source repo_downloads repo_commits repo_tags repo_branches /w3c/web-platform-tests" data-pjax="true" data-gotokey="c" href="/w3c/web-platform-tests">
+        <span class="octicon octicon-code"></span>
+        <span class="full-word">
+
+            Travis CI
+
+        </span>
+        <img class="mini-loader" width="16" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" alt="Octocat-spinner-32"></img>
+    </a>
+
+</li>*/
+let li = window.document.createElement('li');
+
+li.classList.add('tooltipped');
+li.classList.add('leftwards');
+
+let a = window.document.createElement('a');
+li.classList.add('js-selected-navigation-item');
+
+let spanOcticon = window.document.createElement('span');
+let spanWord = window.document.createElement('span');
+spanWord.appendChild(document.createTextNode('  Travis  CI  '));
+
+let imgLoader = window.document.createElement('img');
+
+a.appendChild(spanOcticon);
+a.appendChild(spanWord);
+a.appendChild(imgLoader);
+li.appendChild(a);
+let code = window.document.querySelector('.tooltipped.leftwards');
+code.appendChild(li);
+
+
+
