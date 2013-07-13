@@ -1,3 +1,5 @@
+"use strict";
+
 let project = window.location.pathname.split('/').splice(0,3).join('/');
 const PASSED = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Ij4NCjxwYXRoIGZpbGw9IiMwRDgxMzYiIGQ9Ik01LDBDMi4yMzksMCwwLDIuMjQsMCw1YzAsMi43NjIsMi4yMzksNSw1LDVjMi43NjIsMCw1LTIuMjM4LDUtNUMxMCwyLjI0LDcuNzYyLDAsNSwwIE00LjUzNSw3LjgyNA0KCUwyLjEzOSw1LjQyNUwzLjY1LDMuOTE0bDAuODg1LDAuODg1bDIuMDQ0LTIuMDQ1bDEuNTEsMS41MTNMNC41MzUsNy44MjR6Ii8+DQo8L3N2Zz4NCg==';
 const GREY = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Ij4NCjxwYXRoIGZpbGw9IiNBOEE4QTkiIGQ9Ik01LDBDMi4yMzksMCwwLDIuMjQsMCw1YzAsMi43NjIsMi4yMzgsNSw1LDVjMi43NjEsMCw1LTIuMjM4LDUtNUMxMCwyLjI0LDcuNzYyLDAsNSwwIE01Ljg2Niw3LjZINC4xMzQNCglWNi43MzJoMS43MzFWNy42eiBNNS43NDcsNS40NDFDNS43MDIsNS42NzUsNS40Nyw1Ljg2Niw1LjIzMiw1Ljg2Nkg0Ljc3Yy0wLjIzOCwwLTAuNDctMC4xOS0wLjUxNi0wLjQyNUwzLjc1MSwyLjgyOA0KCUMzLjcwOCwyLjU5MiwzLjg2NiwyLjQwMSw0LjEwNCwyLjQwMWgxLjc5M2MwLjIzNiwwLDAuMzk2LDAuMTkxLDAuMzUyLDAuNDI3TDUuNzQ3LDUuNDQxeiIvPg0KPC9zdmc+DQo=';
@@ -56,24 +58,24 @@ if(links.length > 0){
 
 // Add Travis CI Tab to GitHub
 
-let li = window.document.createElement('li');
+let li = document.createElement('li');
 
 li.classList.add('tooltipped');
 li.classList.add('leftwards');
 
-let a = window.document.createElement('a');
+let a = document.createElement('a');
 li.classList.add('js-selected-navigation-item');
 
-let spanOcticon = window.document.createElement('span');
-let spanWord = window.document.createElement('span');
+let spanOcticon = document.createElement('span');
+let spanWord = document.createElement('span');
 spanWord.appendChild(document.createTextNode('  Travis  CI  '));
 
 spanWord.addEventListener('click', function(){
-    let selectedItem = window.document.querySelector('a.selected');
+    let selectedItem = document.querySelector('a.selected');
     selectedItem.classList.remove('selected');
     selectedItem.classList.remove('js-selected-navigation-item');
     a.classList.add('selected');
-    let codeBody = window.document.getElementById('js-repo-pjax-container');
+    let codeBody = document.getElementById('js-repo-pjax-container');
     codeBody.style = 'display:none;';
 
     //lets having the loading icon until we are ready to go.
@@ -87,41 +89,41 @@ spanWord.addEventListener('click', function(){
       if (xhr.status == 200) {
         let responseText = JSON.parse(xhr.responseText);
         if (responseText.length !== 0) {
-          let table = window.document.createElement('table');
+          let table = document.createElement('table');
           table.classList.add('list');
-          let thead = window.document.createElement('thead');
-          let thtr = window.document.createElement('tr');
-          let thtd1 = window.document.createElement('th');
+          let thead = document.createElement('thead');
+          let thtr = document.createElement('tr');
+          let thtd1 = document.createElement('th');
           thtd1.classList.add('tth');
-          let thtd2 = window.document.createElement('th');
+          let thtd2 = document.createElement('th');
           thtd2.classList.add('tth')
-          let thtd3 = window.document.createElement('th');
+          let thtd3 = document.createElement('th');
           thtd3.classList.add('tth')
-          let thtd4 = window.document.createElement('th');
+          let thtd4 = document.createElement('th');
           thtd4.classList.add('tth')
-          thtd1.appendChild(window.document.createTextNode('Build Number'));
-          thtd2.appendChild(window.document.createTextNode('Build State'));
-          thtd3.appendChild(window.document.createTextNode('Build Branch'));
-          thtd4.appendChild(window.document.createTextNode('Build Message'));
+          thtd1.appendChild(document.createTextNode('Build Number'));
+          thtd2.appendChild(document.createTextNode('Build State'));
+          thtd3.appendChild(document.createTextNode('Build Branch'));
+          thtd4.appendChild(document.createTextNode('Build Message'));
           thtr.appendChild(thtd1);
           thtr.appendChild(thtd2);
           thtr.appendChild(thtd3);
           thtr.appendChild(thtd4);
           thead.appendChild(thtr);
           table.appendChild(thead);
-          let tbody = window.document.createElement('tbody');
+          let tbody = document.createElement('tbody');
           for (var i = 0; i < responseText.length; i++) {
-            let tr = window.document.createElement('tr');
-            let td1 = window.document.createElement('td');
-            let td2 = window.document.createElement('td');
-            let td3 = window.document.createElement('td');
-            let td4 = window.document.createElement('td');
-            let resspan = window.document.createElement('span');
+            let tr = document.createElement('tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+            let td4 = document.createElement('td');
+            let resspan = document.createElement('span');
 
-            td1.appendChild(window.document.createTextNode(responseText[i].number));
-            td2.appendChild(window.document.createTextNode(responseText[i].state));
-            td3.appendChild(window.document.createTextNode(responseText[i].branch));
-            td4.appendChild(window.document.createTextNode(responseText[i].message));
+            td1.appendChild(document.createTextNode(responseText[i].number));
+            td2.appendChild(document.createTextNode(responseText[i].state));
+            td3.appendChild(document.createTextNode(responseText[i].branch));
+            td4.appendChild(document.createTextNode(responseText[i].message));
             td4.classList.add('tdmessage');
             if (responseText[i].state === 'finished') {
               resspan.classList.add('greenStatus');
@@ -140,33 +142,33 @@ spanWord.addEventListener('click', function(){
           codeBody.parentNode.appendChild(table);
         }
         else {
-          let noBuilds = window.document.createElement('div');
-          noBuilds.appendChild(window.document.createTextNode("Unfortunately No Data was returned from Travis CI, maybe set up your project there?"));
+          let noBuilds = document.createElement('div');
+          noBuilds.appendChild(document.createTextNode("Unfortunately No Data was returned from Travis CI, maybe set up your project there?"));
           codeBody.parentNode.appendChild(noBuilds);
         }
       } else {
-        let errorDiv = window.document.createElement('div');
-        errorDiv.appendChild(window.document.createTextNode('Unfortunately there has been an error'));
+        let errorDiv = document.createElement('div');
+        errorDiv.appendChild(document.createTextNode('Unfortunately there has been an error'));
         codeBody.parentNode.appendChild(errorDiv);
       }
     };
     xhr.send();
 });
 
-let imgLoader = window.document.createElement('img');
+let imgLoader = document.createElement('img');
 
 a.appendChild(spanOcticon);
 a.appendChild(spanWord);
 a.appendChild(imgLoader);
 li.appendChild(a);
 
-let code = window.document.querySelector('.tooltipped.leftwards');
+let code = document.querySelector('.tooltipped.leftwards');
 code.appendChild(li);
 
 var createLoading = function() {
-  let loading = window.document.createElement('div');
+  let loading = document.createElement('div');
   loading.classList.add('large-loading-area');
-  let loadingImg = window.document.createElement('img');
+  let loadingImg = document.createElement('img');
   loadingImg.src = "https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-64.gif";
   loadingImg.height = 32;
   loadingImg.width = 32;
