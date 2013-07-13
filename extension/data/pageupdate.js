@@ -45,20 +45,8 @@ if(links.length > 0){
   }
 }
 
-// Add Travis CI button to GitHub
-/*<li class="tooltipped leftwards" original-title="Code">
+// Add Travis CI Tab to GitHub
 
-    <a class="js-selected-navigation-item selected" data-selected-links="repo_source repo_downloads repo_commits repo_tags repo_branches /w3c/web-platform-tests" data-pjax="true" data-gotokey="c" href="/w3c/web-platform-tests">
-        <span class="octicon octicon-code"></span>
-        <span class="full-word">
-
-            Travis CI
-
-        </span>
-        <img class="mini-loader" width="16" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" alt="Octocat-spinner-32"></img>
-    </a>
-
-</li>*/
 let li = window.document.createElement('li');
 
 li.classList.add('tooltipped');
@@ -71,14 +59,40 @@ let spanOcticon = window.document.createElement('span');
 let spanWord = window.document.createElement('span');
 spanWord.appendChild(document.createTextNode('  Travis  CI  '));
 
+spanWord.addEventListener('click', function(){
+    let selectedItem = window.document.querySelector('a.selected');
+    selectedItem.classList.remove('selected');
+    selectedItem.classList.remove('js-selected-navigation-item');
+    a.classList.add('selected');
+    let codeBody = window.document.getElementById('js-repo-pjax-container');
+    codeBody.style = 'display:none;';
+    let travisDiv = window.document.createElement('div');
+    travisDiv.appendChild(window.document.createTextNode('Travis CI Coming here soon'));
+    codeBody.parentNode.appendChild(travisDiv);
+
+    //lets having the loading icon until we are ready to go.
+    let loading = createLoading();
+    codeBody.parentNode.appendChild(loading);
+});
+
 let imgLoader = window.document.createElement('img');
 
 a.appendChild(spanOcticon);
 a.appendChild(spanWord);
 a.appendChild(imgLoader);
 li.appendChild(a);
+
 let code = window.document.querySelector('.tooltipped.leftwards');
 code.appendChild(li);
 
-
+var createLoading = function() {
+  let loading = window.document.createElement('div');
+  loading.classList.add('large-loading-area');
+  let loadingImg = window.document.createElement('img');
+  loadingImg.src = "https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-64.gif";
+  loadingImg.height = 32;
+  loadingImg.width = 32;
+  loading.appendChild(loadingImg);
+  return loading;
+}
 
