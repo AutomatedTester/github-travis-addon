@@ -7,7 +7,7 @@ style.innerHTML += 'ul.repositories a.travis-ci.user{position:relative;top:5px}'
 style.innerHTML += '.travis-ci.repo{margin:0 0 0 8px}';
 var body = window.document.getElementsByTagName('body')[0];
 body.appendChild(style);
-      
+
 function isStatusUnknown(img){
   // Cannot compare actual image data through canvas due to Same Origin Policy
   return img.width == 95 && img.height == 13;
@@ -22,7 +22,7 @@ function insertBuildStatus(el, project, className){
       var link = document.createElement('a');
       link.href = 'http://travis-ci.org' + project;
       link.className = 'travis-ci ' + className;
-  
+
       link.appendChild(img);
       el.appendChild(link);
     }
@@ -44,3 +44,4 @@ if(links.length > 0){
     }
   }
 }
+
