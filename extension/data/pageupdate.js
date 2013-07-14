@@ -119,8 +119,10 @@ spanWord.addEventListener('click', function(){
             let td3 = document.createElement('td');
             let td4 = document.createElement('td');
             let resspan = document.createElement('span');
-
-            td1.appendChild(document.createTextNode(responseText[i].number));
+            let aTravis = document.createElement('a');
+            aTravis.href = 'https://travis-ci.org' + project + '/builds/' + responseText[i].id;
+            aTravis.appendChild(document.createTextNode(responseText[i].number));
+            td1.appendChild(aTravis);
             td2.appendChild(document.createTextNode(responseText[i].state));
             td3.appendChild(document.createTextNode(responseText[i].branch));
             td4.appendChild(document.createTextNode(responseText[i].message));
