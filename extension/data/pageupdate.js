@@ -13,8 +13,8 @@ style.innerHTML += '.travis-ci.repo{margin:0 0 0 8px}';
 style.innerHTML += '.list{margin:25px 0px 0px 12px;border-spacing:0px;};'
 style.innerHTML += '.tth{font-size: 13px; color: rgb(102, 102, 102); white-space: nowrap; border-bottom: 2px solid rgb(255, 255, 255);}';
 style.innerHTML += '.tdmessage {overflow: hidden; text-overflow: ellipsis; white-space: normal;}';
-style.innerHTML += ".greyStatus {background-image: url(\'' + GREY +'\');}"
-style.innerHTML += ".greenStatus {background-image: url(\'' + PASSED +'\');}"
+style.innerHTML += ".greyStatus {background-image: url( " + GREY + ");}"
+style.innerHTML += ".greenStatus {background-image: url(" + PASSED + ");}"
 var body = window.document.getElementsByTagName('body')[0];
 body.appendChild(style);
 
@@ -101,10 +101,10 @@ spanWord.addEventListener('click', function(){
           thtd3.classList.add('tth')
           let thtd4 = document.createElement('th');
           thtd4.classList.add('tth')
-          thtd1.appendChild(document.createTextNode('Build Number'));
-          thtd2.appendChild(document.createTextNode('Build State'));
-          thtd3.appendChild(document.createTextNode('Build Branch'));
-          thtd4.appendChild(document.createTextNode('Build Message'));
+          thtd1.appendChild(document.createTextNode('Number'));
+          thtd2.appendChild(document.createTextNode('Commit'));
+          thtd3.appendChild(document.createTextNode('Finished At'));
+          thtd4.appendChild(document.createTextNode('Message'));
           thtr.appendChild(thtd1);
           thtr.appendChild(thtd2);
           thtr.appendChild(thtd3);
@@ -123,8 +123,8 @@ spanWord.addEventListener('click', function(){
             aTravis.href = 'https://travis-ci.org' + project + '/builds/' + responseText[i].id;
             aTravis.appendChild(document.createTextNode(responseText[i].number));
             td1.appendChild(aTravis);
-            td2.appendChild(document.createTextNode(responseText[i].state));
-            td3.appendChild(document.createTextNode(responseText[i].branch));
+            td2.appendChild(document.createTextNode(responseText[i].commit.substring(0, 7) + " (" + responseText[i].branch + ")"));
+            td3.appendChild(document.createTextNode(responseText[i].finished_at));
             td4.appendChild(document.createTextNode(responseText[i].message));
             td4.classList.add('tdmessage');
             if (responseText[i].state === 'finished') {
