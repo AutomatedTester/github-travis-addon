@@ -64,8 +64,8 @@ li.classList.add('tooltipped');
 li.classList.add('leftwards');
 
 let a = document.createElement('a');
-li.classList.add('js-selected-navigation-item');
-
+a.classList.add('js-selected-navigation-item');
+a.href = '#';
 let spanOcticon = document.createElement('span');
 let spanWord = document.createElement('span');
 spanWord.appendChild(document.createTextNode('  Travis  CI  '));
@@ -81,9 +81,9 @@ spanWord.addEventListener('click', function(){
     //lets having the loading icon until we are ready to go.
     let loading = createLoading();
     codeBody.parentNode.appendChild(loading);
-
+    let apiURL = "https://api.travis-ci.org/repos/" + project + "/builds";
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.travis-ci.org/repos/" + project + "/builds", true);
+    xhr.open("GET", apiURL, true);
     xhr.onload = function(data) {
       loading.style = "display:none;";
       if (xhr.status == 200) {
