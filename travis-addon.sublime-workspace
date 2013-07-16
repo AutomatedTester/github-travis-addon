@@ -1,0 +1,238 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"f",
+				"folder_exclude_patterns"
+			],
+			[
+				"pare",
+				"parentNode"
+			],
+			[
+				"bot",
+				"bottom"
+			],
+			[
+				"get",
+				"getComputedStyle"
+			],
+			[
+				"getCl",
+				"getBoundingClientRect"
+			],
+			[
+				"cu",
+				"currentWindow"
+			],
+			[
+				"doc",
+				"document"
+			],
+			[
+				"tar",
+				"targetLocation"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/JSHint/JSHint.sublime-build",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"mar",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"mark",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 507.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/dburns/development/rust-koans/about_methods.rs",
+		"/Users/dburns/development/rust-koans/about_arrays.rs",
+		"/Users/dburns/development/rust-koans/about_variables.rs",
+		"/Users/dburns/development/rust-koans/rust-koans.sublime-workspace",
+		"/Users/dburns/development/rust-koans/Makefile",
+		"/Users/dburns/development/rust-koans/rust-koans.sublime-project",
+		"/Users/dburns/development/rust-koans/README.md",
+		"/Users/dburns/development/rust-koans/.gitignore",
+		"/Users/dburns/development/mozilla/mozilla-inbound/testing/marionette/marionette-listener.js",
+		"/Users/dburns/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/dburns/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/dburns/development/bisectcloud/README.md",
+		"/Users/dburns/development/bisectcloud/settings_test.py",
+		"/Users/dburns/development/bisectcloud/bisectcloud.sublime-workspace",
+		"/Users/dburns/development/bisectcloud/bisectcloud.sublime-project",
+		"/Users/dburns/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/dburns/development/Presentations/index.html"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"goog",
+			"scrollRegionIntoView_",
+			"scrollElementRegionIntoContainerView_",
+			"scrollElementRegionIntoClientView",
+			"scrollElementRegionIntolientView",
+			"goog",
+			"calculateViewportScrolling",
+			"getViewPortSize",
+			"curW",
+			"rect",
+			"elementInView",
+			"ignored_pa",
+			"vint"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 102.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

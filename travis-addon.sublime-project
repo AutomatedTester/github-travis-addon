@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "~/development/github-travis-addon",
+            "folder_exclude_patterns": ["~/development/github-travis-addon/addon-sdk/"]
+		}
+	]
+}
