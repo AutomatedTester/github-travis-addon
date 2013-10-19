@@ -1,11 +1,11 @@
 "use strict";
 
-var pageMod = require("page-mod")
-  , widgets = require("widget")
-  , panel = require("panel")
-  , self = require("self")
-  , prefs = require("api-utils/preferences-service")
-  , tabs = require("tabs");
+var pageMod = require("sdk/page-mod")
+  , widgets = require("sdk/widget")
+  , panel = require("sdk/panel")
+  , self = require("sdk/self")
+  , prefs = require("sdk/preferences/service")
+  , tabs = require("sdk/tabs");
 
 const MODIFIED_PREFS_PREF = "extensions." + self.id + ".modifiedPrefs";
 const TRAVIS_CI_PREF = "travis_ci.projects";
